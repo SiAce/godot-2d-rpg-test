@@ -32,4 +32,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	
+
+func reload_sprite_texture(sprite_part: StringName, id: StringName):
+	for animation_name in animation_names:
+		sprite_textures[animation_name][sprite_part] = load("res://sprites/player/{animation_name}/{sprite_part}/{id}.png".format(
+			{"animation_name": animation_name, "sprite_part": sprite_part, "id": id}))

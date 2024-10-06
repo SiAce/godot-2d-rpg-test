@@ -21,6 +21,12 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("1"):
+		parent.reload_sprite_texture("weaponOverArm", "1")
+		enter()
+	if Input.is_action_just_pressed("2"):
+		parent.reload_sprite_texture("weaponOverArm", "weaponOverArm")
+		enter()
 	return null
 
 func process_frame(delta: float) -> State:
