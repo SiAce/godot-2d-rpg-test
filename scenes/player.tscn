@@ -1,0 +1,264 @@
+[gd_scene load_steps=15 format=3 uid="uid://n8ifsaklqx21"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_bdjat"]
+[ext_resource type="Texture2D" uid="uid://dsbtcteienf7v" path="res://sprites/player/stand2/body/body.png" id="2_ye6jx"]
+[ext_resource type="Texture2D" uid="uid://c7sd6b0wahk7q" path="res://sprites/player/stand2/arm/arm.png" id="3_40lrq"]
+[ext_resource type="Texture2D" uid="uid://h7sulu17a3eq" path="res://sprites/player/stand2/head/head.png" id="4_brb0w"]
+[ext_resource type="Texture2D" uid="uid://c307b4pmw1auw" path="res://sprites/player/stand2/weaponOverArm/weaponOverArm.png" id="5_pdpuw"]
+[ext_resource type="Texture2D" uid="uid://dcbw4we855me5" path="res://sprites/player/stand2/handOverHair/handOverHair.png" id="6_670mw"]
+[ext_resource type="PackedScene" uid="uid://sw8ffjw1te1s" path="res://scenes/state_machine.tscn" id="7_bjo6j"]
+[ext_resource type="Script" path="res://scripts/player/states/stand2.gd" id="8_ld61e"]
+[ext_resource type="Script" path="res://scripts/player/states/walk2.gd" id="9_7d3r7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3qfo"]
+radius = 15.0
+height = 66.0
+
+[sub_resource type="Animation" id="Animation_ca14y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weaponOverArm:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("handOverHair:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_l5egg"]
+resource_name = "stand"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weaponOverArm:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("handOverHair:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_c8r3i"]
+resource_name = "walk2"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weaponOverArm:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("handOverHair:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hwifu"]
+_data = {
+"RESET": SubResource("Animation_ca14y"),
+"stand2": SubResource("Animation_l5egg"),
+"walk2": SubResource("Animation_c8r3i")
+}
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_bdjat")
+
+[node name="root_sprite" type="Node2D" parent="."]
+
+[node name="body" type="Sprite2D" parent="root_sprite"]
+texture = ExtResource("2_ye6jx")
+hframes = 4
+
+[node name="arm" type="Sprite2D" parent="root_sprite"]
+texture = ExtResource("3_40lrq")
+hframes = 4
+
+[node name="head" type="Sprite2D" parent="root_sprite"]
+texture = ExtResource("4_brb0w")
+hframes = 4
+
+[node name="weaponOverArm" type="Sprite2D" parent="root_sprite"]
+texture = ExtResource("5_pdpuw")
+hframes = 4
+
+[node name="handOverHair" type="Sprite2D" parent="root_sprite"]
+texture = ExtResource("6_670mw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_d3qfo")
+
+[node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("7_bjo6j")]
+starting_state = NodePath("stand2")
+
+[node name="stand2" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state")]
+script = ExtResource("8_ld61e")
+move_state = NodePath("../walk2")
+animation_name = "stand2"
+
+[node name="walk2" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("9_7d3r7")
+idle_state = NodePath("../stand2")
+animation_name = "walk2"
+
+[node name="animations" type="AnimationPlayer" parent="."]
+root_node = NodePath("../root_sprite")
+libraries = {
+"": SubResource("AnimationLibrary_hwifu")
+}
