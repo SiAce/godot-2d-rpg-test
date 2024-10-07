@@ -1,14 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://n8ifsaklqx21"]
+[gd_scene load_steps=21 format=3 uid="uid://n8ifsaklqx21"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_bdjat"]
-[ext_resource type="Texture2D" uid="uid://dsbtcteienf7v" path="res://sprites/player/stand2/body/body.png" id="2_ye6jx"]
-[ext_resource type="Texture2D" uid="uid://c7sd6b0wahk7q" path="res://sprites/player/stand2/arm/arm.png" id="3_40lrq"]
-[ext_resource type="Texture2D" uid="uid://h7sulu17a3eq" path="res://sprites/player/stand2/head/head.png" id="4_brb0w"]
-[ext_resource type="Texture2D" uid="uid://c307b4pmw1auw" path="res://sprites/player/stand2/weaponOverArm/weaponOverArm.png" id="5_pdpuw"]
-[ext_resource type="Texture2D" uid="uid://dcbw4we855me5" path="res://sprites/player/stand2/handOverHair/handOverHair.png" id="6_670mw"]
+[ext_resource type="Texture2D" uid="uid://c1jliqon70icw" path="res://sprites/player/swingP1/weaponBelowBody/0.png" id="2_0rxyu"]
+[ext_resource type="Texture2D" uid="uid://c7sd6b0wahk7q" path="res://sprites/player/stand2/arm/0.png" id="3_40lrq"]
+[ext_resource type="Texture2D" uid="uid://cwfqwxt3tbrgk" path="res://sprites/player/swingP1/body/0.png" id="3_kknaw"]
+[ext_resource type="Texture2D" uid="uid://h7sulu17a3eq" path="res://sprites/player/stand2/head/0.png" id="4_brb0w"]
+[ext_resource type="Texture2D" uid="uid://c307b4pmw1auw" path="res://sprites/player/stand2/weaponOverArm/0.png" id="5_pdpuw"]
+[ext_resource type="Texture2D" uid="uid://dxkypvb6maqxs" path="res://sprites/player/swingP1/weaponBelowArm/0.png" id="6_4jyu0"]
+[ext_resource type="Texture2D" uid="uid://dcbw4we855me5" path="res://sprites/player/stand2/handOverHair/0.png" id="6_670mw"]
+[ext_resource type="Texture2D" uid="uid://cggumx7ls2ps6" path="res://sprites/player/swingP1/armOverHairBelowWeapon/0.png" id="7_1jo5u"]
 [ext_resource type="PackedScene" uid="uid://sw8ffjw1te1s" path="res://scenes/state_machine.tscn" id="7_bjo6j"]
 [ext_resource type="Script" path="res://scripts/player/states/stand2.gd" id="8_ld61e"]
 [ext_resource type="Script" path="res://scripts/player/states/walk2.gd" id="9_7d3r7"]
+[ext_resource type="Texture2D" uid="uid://b8x5yc5ws50qi" path="res://sprites/player/swingP1/armOverHair/0.png" id="9_hlvs1"]
+[ext_resource type="Script" path="res://scripts/player/states/swingP1.gd" id="14_2el6h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3qfo"]
 radius = 15.0
@@ -71,6 +76,54 @@ tracks/4/path = NodePath("handOverHair:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weaponBelowBody:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("weaponBelowArm:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("armOverHairBelowWeapon:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("armOverHair:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -141,6 +194,107 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("body:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v23fu"]
+resource_name = "swingP1"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weaponBelowBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weaponBelowArm:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("armOverHairBelowWeapon:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("armOverHair:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_c8r3i"]
@@ -213,31 +367,52 @@ tracks/4/keys = {
 _data = {
 "RESET": SubResource("Animation_ca14y"),
 "stand2": SubResource("Animation_l5egg"),
+"swingP1": SubResource("Animation_v23fu"),
 "walk2": SubResource("Animation_c8r3i")
 }
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_bdjat")
 
-[node name="root_sprite" type="Node2D" parent="."]
+[node name="flip" type="Node2D" parent="."]
 
-[node name="body" type="Sprite2D" parent="root_sprite"]
-texture = ExtResource("2_ye6jx")
-hframes = 4
+[node name="root_sprite" type="Node2D" parent="flip"]
 
-[node name="arm" type="Sprite2D" parent="root_sprite"]
+[node name="weaponBelowBody" type="Sprite2D" parent="flip/root_sprite"]
+texture = ExtResource("2_0rxyu")
+hframes = 3
+
+[node name="body" type="Sprite2D" parent="flip/root_sprite"]
+texture = ExtResource("3_kknaw")
+hframes = 3
+
+[node name="arm" type="Sprite2D" parent="flip/root_sprite"]
 texture = ExtResource("3_40lrq")
 hframes = 4
 
-[node name="head" type="Sprite2D" parent="root_sprite"]
+[node name="head" type="Sprite2D" parent="flip/root_sprite"]
 texture = ExtResource("4_brb0w")
 hframes = 4
 
-[node name="weaponOverArm" type="Sprite2D" parent="root_sprite"]
+[node name="weaponBelowArm" type="Sprite2D" parent="flip/root_sprite"]
+texture = ExtResource("6_4jyu0")
+hframes = 3
+
+[node name="weaponOverArm" type="Sprite2D" parent="flip/root_sprite"]
+visible = false
 texture = ExtResource("5_pdpuw")
 hframes = 4
 
-[node name="handOverHair" type="Sprite2D" parent="root_sprite"]
+[node name="armOverHairBelowWeapon" type="Sprite2D" parent="flip/root_sprite"]
+texture = ExtResource("7_1jo5u")
+hframes = 3
+
+[node name="armOverHair" type="Sprite2D" parent="flip/root_sprite"]
+texture = ExtResource("9_hlvs1")
+hframes = 3
+
+[node name="handOverHair" type="Sprite2D" parent="flip/root_sprite"]
+visible = false
 texture = ExtResource("6_670mw")
 hframes = 4
 
@@ -247,18 +422,27 @@ shape = SubResource("CapsuleShape2D_d3qfo")
 [node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("7_bjo6j")]
 starting_state = NodePath("stand2")
 
-[node name="stand2" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state")]
+[node name="stand2" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state", "attack_state")]
 script = ExtResource("8_ld61e")
 move_state = NodePath("../walk2")
+attack_state = NodePath("../swingP1")
 animation_name = "stand2"
 
-[node name="walk2" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+[node name="walk2" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "attack_state")]
 script = ExtResource("9_7d3r7")
 idle_state = NodePath("../stand2")
+attack_state = NodePath("../swingP1")
 animation_name = "walk2"
 
+[node name="swingP1" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("14_2el6h")
+idle_state = NodePath("../stand2")
+animation_name = "swingP1"
+
 [node name="animations" type="AnimationPlayer" parent="."]
-root_node = NodePath("../root_sprite")
+root_node = NodePath("../flip/root_sprite")
 libraries = {
 "": SubResource("AnimationLibrary_hwifu")
 }
+
+[connection signal="animation_finished" from="animations" to="state_machine/swingP1" method="_on_animations_animation_finished"]

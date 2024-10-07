@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7sd6b0wahk7q"
-path="res://.godot/imported/arm.png-602b59e5c43656d4ed055fc1cf8a081a.ctex"
+uid="uid://bmphtqkrvhsqa"
+path="res://.godot/imported/0.png-3990d5ed5e8fcd51bed71ce9d5468821.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/stand2/arm/arm.png"
-dest_files=["res://.godot/imported/arm.png-602b59e5c43656d4ed055fc1cf8a081a.ctex"]
+source_file="res://sprites/player/swingP1/head/0.png"
+dest_files=["res://.godot/imported/0.png-3990d5ed5e8fcd51bed71ce9d5468821.ctex"]
 
 [params]
 

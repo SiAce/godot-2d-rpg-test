@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsbtcteienf7v"
-path="res://.godot/imported/body.png-440377384a87c209c7244e46c19e587e.ctex"
+uid="uid://5eoft1h2xefa"
+path="res://.godot/imported/1.png-001150ffd793934840ed7ad1d7636b21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/stand2/body/body.png"
-dest_files=["res://.godot/imported/body.png-440377384a87c209c7244e46c19e587e.ctex"]
+source_file="res://sprites/player/swingP1/weaponBelowBody/1.png"
+dest_files=["res://.godot/imported/1.png-001150ffd793934840ed7ad1d7636b21.ctex"]
 
 [params]
 

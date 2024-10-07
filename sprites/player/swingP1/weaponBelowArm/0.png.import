@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://com5a4s1pl8np"
-path="res://.godot/imported/handOverHair.png-58a9126597f8120294b698f0b3152911.ctex"
+uid="uid://dxkypvb6maqxs"
+path="res://.godot/imported/0.png-7110ef37639ba865cf5c93853fc4107b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/walk2/handOverHair/handOverHair.png"
-dest_files=["res://.godot/imported/handOverHair.png-58a9126597f8120294b698f0b3152911.ctex"]
+source_file="res://sprites/player/swingP1/weaponBelowArm/0.png"
+dest_files=["res://.godot/imported/0.png-7110ef37639ba865cf5c93853fc4107b.ctex"]
 
 [params]
 

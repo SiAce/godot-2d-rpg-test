@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h7sulu17a3eq"
-path="res://.godot/imported/head.png-0902ee84b0a51eab21a76c59208092a1.ctex"
+uid="uid://cwfqwxt3tbrgk"
+path="res://.godot/imported/0.png-f318285a66d70360c861e9e1d6378dde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/stand2/head/head.png"
-dest_files=["res://.godot/imported/head.png-0902ee84b0a51eab21a76c59208092a1.ctex"]
+source_file="res://sprites/player/swingP1/body/0.png"
+dest_files=["res://.godot/imported/0.png-f318285a66d70360c861e9e1d6378dde.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co2s7hxdvoyud"
-path="res://.godot/imported/weaponOverArm.png-a1cd92eeda5af3551397a02135d2c8f9.ctex"
+uid="uid://b5p7x5x8x2rf0"
+path="res://.godot/imported/0.png-1e2a6cedfccb2728c76bbe3bbda9d36e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/walk2/weaponOverArm/weaponOverArm.png"
-dest_files=["res://.godot/imported/weaponOverArm.png-a1cd92eeda5af3551397a02135d2c8f9.ctex"]
+source_file="res://sprites/player/walk2/head/0.png"
+dest_files=["res://.godot/imported/0.png-1e2a6cedfccb2728c76bbe3bbda9d36e.ctex"]
 
 [params]
 

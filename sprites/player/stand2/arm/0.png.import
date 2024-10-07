@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5p7x5x8x2rf0"
-path="res://.godot/imported/head.png-fa159c05a89dad4dc6ffef7b1f01528e.ctex"
+uid="uid://c7sd6b0wahk7q"
+path="res://.godot/imported/0.png-68535a0558c22cf4387f18ae5827d440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/walk2/head/head.png"
-dest_files=["res://.godot/imported/head.png-fa159c05a89dad4dc6ffef7b1f01528e.ctex"]
+source_file="res://sprites/player/stand2/arm/0.png"
+dest_files=["res://.godot/imported/0.png-68535a0558c22cf4387f18ae5827d440.ctex"]
 
 [params]
 
