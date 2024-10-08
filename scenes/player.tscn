@@ -372,6 +372,8 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 12
+collision_mask = 129
 script = ExtResource("1_bdjat")
 
 [node name="flip" type="Node2D" parent="."]
@@ -426,18 +428,15 @@ starting_state = NodePath("stand2")
 script = ExtResource("8_ld61e")
 move_state = NodePath("../walk2")
 attack_state = NodePath("../swingP1")
-animation_name = "stand2"
 
 [node name="walk2" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "attack_state")]
 script = ExtResource("9_7d3r7")
 idle_state = NodePath("../stand2")
 attack_state = NodePath("../swingP1")
-animation_name = "walk2"
 
 [node name="swingP1" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("14_2el6h")
 idle_state = NodePath("../stand2")
-animation_name = "swingP1"
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("../flip/root_sprite")

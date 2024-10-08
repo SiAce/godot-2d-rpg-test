@@ -1,8 +1,8 @@
 class_name PlayerState
 extends State
 
-@export
-var animation_name: String
+@onready
+var animation_name: String = self.name
 @export
 var move_speed: float = 120
 

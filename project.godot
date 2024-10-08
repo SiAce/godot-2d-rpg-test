@@ -33,6 +33,17 @@ attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="ground"
+2d_physics/layer_2="empty"
+2d_physics/layer_3="player"
+2d_physics/layer_4="player_hurtbox"
+2d_physics/layer_5="player_hitbox"
+2d_physics/layer_6="mob"
+2d_physics/layer_7="mob_hurtbox"
+2d_physics/layer_8="mob_hitbox"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -20,3 +20,16 @@ https://siace.itch.io/2d-rpg-test
 - Attribute System
 - Leveling System
 - Skill System
+
+## Resource Download
+
+### https://maples.im/
+&renderMode={0,1,2,3,4,5}
+renderMode good candidates: 2
+renderMode 1 has the perfectly correct positions but part of the sprite is missing.
+
+## Deal Breaker
+
+No live editor view makes it hard to see the colliders in real time.
+
+Cannot anchor the sprite.
