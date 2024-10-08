@@ -33,3 +33,5 @@ renderMode 1 has the perfectly correct positions but part of the sprite is missi
 No live editor view makes it hard to see the colliders in real time.
 
 Cannot anchor the sprite.
+
+.gdignore too limited.
