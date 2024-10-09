@@ -10,13 +10,13 @@ https://siace.itch.io/2d-rpg-test
 - Dynamic Sprite Texture Change
 - Support swappable weapons
   - Press 1 or 2 to switch weapons
-
-## TODO
 - Mob
-  - State Machine or Behavior Tree?
+  - State Machine
 - Attack Hitbox 
 - Hurtbox/collision
 - Attack Visual Effect
+
+## TODO
 - Attribute System
 - Leveling System
 - Skill System
