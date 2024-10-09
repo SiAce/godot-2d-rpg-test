@@ -11,7 +11,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 ## Hold a reference to the parent so that it can be controlled by the state
 var parent: Player
 
-func enter() -> void:
+func enter(data={}) -> void:
 	for any_sprite_part_node in parent.root_sprite.get_children():
 		any_sprite_part_node.visible = false
 	for sprite_part in parent.animation_sprite_parts[animation_name]:
@@ -22,7 +22,7 @@ func enter() -> void:
 	
 	parent.animations.play(animation_name)
 
-func exit() -> void:
+func exit(data={}) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:

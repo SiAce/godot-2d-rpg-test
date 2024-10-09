@@ -2,12 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 const animation_sprite_parts = {
+	"alert": ["body", "head", "armOverHair", "weaponOverArm", "handBelowWeapon", "handOverHair"],
 	"stand2": ["body", "arm", "head", "weaponOverArm", "handOverHair"],
 	"walk2": ["body", "arm", "head", "weaponOverArm", "handOverHair"],
 	"swingP1": ["weaponBelowBody", "body", "arm", "head", "weaponBelowArm", "armOverHairBelowWeapon", "armOverHair"]
 }
 
 const animation_hframes = {
+	"alert": 4,
 	"stand2": 4,
 	"walk2": 4,
 	"swingP1": 3
@@ -15,6 +17,7 @@ const animation_hframes = {
 
 const reload_sprite_parts = {
 	"weapon": {
+		"alert": ["weaponOverArm"],
 		"stand2": ["weaponOverArm"],
 		"walk2": ["weaponOverArm"],
 		"swingP1": ["weaponBelowBody","weaponBelowArm"]
@@ -24,7 +27,7 @@ const reload_sprite_parts = {
 @onready
 var animations = $animations
 @onready
-var state_machine = $state_machine
+var state_machine: StateMachine = $state_machine
 @onready
 var root_sprite = $flip/root_sprite
 @onready
@@ -57,3 +60,6 @@ func reload_sprite_texture(reload_part: StringName, id: StringName):
 		for sprite_part in reload_sprite_parts[reload_part][animation_name]:
 			sprite_textures[animation_name][sprite_part] = load("res://sprites/player/{animation_name}/{sprite_part}/{id}.png".format(
 				{"animation_name": animation_name, "sprite_part": sprite_part, "id": id}))
+
+func on_hit():
+	state_machine.change_state($state_machine/alert)

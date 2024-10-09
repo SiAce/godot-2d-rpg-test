@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://klj6ov2judbr"]
+[gd_scene load_steps=31 format=3 uid="uid://klj6ov2judbr"]
 
 [ext_resource type="Script" path="res://scripts/mob/mob.gd" id="1_1jexd"]
 [ext_resource type="Texture2D" uid="uid://xf34dbkt4nue" path="res://sprites/mob/snail/die1-sheet.png" id="1_de5wi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b4c6l4jlyso5w" path="res://sprites/mob/snail/stand-sheet.png" id="4_58xdg"]
 [ext_resource type="PackedScene" uid="uid://sw8ffjw1te1s" path="res://scenes/state_machine.tscn" id="5_qlrrp"]
 [ext_resource type="Script" path="res://scripts/mob/states/move.gd" id="7_b5ud8"]
+[ext_resource type="Script" path="res://scripts/mob/states/hit1.gd" id="8_0i2s4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pscrp"]
 atlas = ExtResource("1_de5wi")
@@ -179,7 +180,7 @@ script = ExtResource("1_1jexd")
 
 [node name="ani_sprite" type="AnimatedSprite2D" parent="flip"]
 sprite_frames = SubResource("SpriteFrames_3x7ws")
-animation = &"hit1"
+animation = &"move"
 
 [node name="forward" type="RayCast2D" parent="flip"]
 target_position = Vector2(-21, 0)
@@ -193,6 +194,11 @@ starting_state = NodePath("move")
 
 [node name="move" type="Node" parent="state_machine"]
 script = ExtResource("7_b5ud8")
+move_speed = 40.0
+
+[node name="hit1" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state")]
+script = ExtResource("8_0i2s4")
+move_state = NodePath("../move")
 
 [node name="hithurtbox" type="Area2D" parent="."]
 collision_layer = 192
@@ -200,3 +206,7 @@ collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hithurtbox"]
 shape = SubResource("RectangleShape2D_jdvlr")
+
+[connection signal="animation_finished" from="flip/ani_sprite" to="state_machine/hit1" method="_on_ani_sprite_animation_finished"]
+[connection signal="area_entered" from="hithurtbox" to="." method="_on_hithurtbox_area_entered"]
+[connection signal="body_entered" from="hithurtbox" to="." method="_on_hithurtbox_body_entered"]

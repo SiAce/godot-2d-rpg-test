@@ -1,3 +1,4 @@
+class_name StateMachine
 extends Node
 
 @export var starting_state: State
@@ -15,12 +16,12 @@ func init(parent: Node) -> void:
 	change_state(starting_state)
 
 # Change to the new state by first calling any exit logic 22on the current state.
-func change_state(new_state: State) -> void:
+func change_state(new_state: State, data = {}) -> void:
 	if current_state:
-		current_state.exit()
+		current_state.exit(data)
 
 	current_state = new_state
-	current_state.enter()
+	current_state.enter(data)
 	
 # Pass through functions for the Player to call,
 # handling state changes as needed.

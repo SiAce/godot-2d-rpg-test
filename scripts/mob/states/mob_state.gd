@@ -11,10 +11,10 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 ## Hold a reference to the parent so that it can be controlled by the state
 var parent: Mob
 
-func enter() -> void:
+func enter(data={}) -> void:
 	pass
 
-func exit() -> void:
+func exit(data={}) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:

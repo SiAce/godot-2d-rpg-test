@@ -1,19 +1,24 @@
-[gd_scene load_steps=21 format=3 uid="uid://n8ifsaklqx21"]
+[gd_scene load_steps=25 format=3 uid="uid://n8ifsaklqx21"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_bdjat"]
 [ext_resource type="Texture2D" uid="uid://c1jliqon70icw" path="res://sprites/player/swingP1/weaponBelowBody/0.png" id="2_0rxyu"]
 [ext_resource type="Texture2D" uid="uid://c7sd6b0wahk7q" path="res://sprites/player/stand2/arm/0.png" id="3_40lrq"]
-[ext_resource type="Texture2D" uid="uid://cwfqwxt3tbrgk" path="res://sprites/player/swingP1/body/0.png" id="3_kknaw"]
-[ext_resource type="Texture2D" uid="uid://h7sulu17a3eq" path="res://sprites/player/stand2/head/0.png" id="4_brb0w"]
-[ext_resource type="Texture2D" uid="uid://c307b4pmw1auw" path="res://sprites/player/stand2/weaponOverArm/0.png" id="5_pdpuw"]
+[ext_resource type="Texture2D" uid="uid://c6wy2ym26edhs" path="res://sprites/player/alert/body/0.png" id="3_uerq4"]
+[ext_resource type="Texture2D" uid="uid://dtwibb1qg7xx2" path="res://sprites/player/alert/head/0.png" id="5_moy8d"]
 [ext_resource type="Texture2D" uid="uid://dxkypvb6maqxs" path="res://sprites/player/swingP1/weaponBelowArm/0.png" id="6_4jyu0"]
-[ext_resource type="Texture2D" uid="uid://dcbw4we855me5" path="res://sprites/player/stand2/handOverHair/0.png" id="6_670mw"]
 [ext_resource type="Texture2D" uid="uid://cggumx7ls2ps6" path="res://sprites/player/swingP1/armOverHairBelowWeapon/0.png" id="7_1jo5u"]
 [ext_resource type="PackedScene" uid="uid://sw8ffjw1te1s" path="res://scenes/state_machine.tscn" id="7_bjo6j"]
+[ext_resource type="Texture2D" uid="uid://uw8gwcnc7rn4" path="res://sprites/player/alert/weaponOverArm/0.png" id="7_qbch8"]
 [ext_resource type="Script" path="res://scripts/player/states/stand2.gd" id="8_ld61e"]
 [ext_resource type="Script" path="res://scripts/player/states/walk2.gd" id="9_7d3r7"]
-[ext_resource type="Texture2D" uid="uid://b8x5yc5ws50qi" path="res://sprites/player/swingP1/armOverHair/0.png" id="9_hlvs1"]
+[ext_resource type="Texture2D" uid="uid://brlrnl0s00f67" path="res://sprites/player/alert/armOverHair/0.png" id="9_nj2fj"]
+[ext_resource type="Texture2D" uid="uid://cpap0h07ow20w" path="res://sprites/player/alert/handBelowWeapon/0.png" id="10_8phwj"]
+[ext_resource type="Texture2D" uid="uid://bo8bq7wp3wblg" path="res://sprites/player/alert/handOverHair/0.png" id="11_0xmca"]
 [ext_resource type="Script" path="res://scripts/player/states/swingP1.gd" id="14_2el6h"]
+[ext_resource type="Script" path="res://scripts/player/states/alert.gd" id="15_ot8vh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coc21"]
+size = Vector2(91, 66)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3qfo"]
 radius = 15.0
@@ -129,6 +134,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("handBelowWeapon:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../hitbox:process_mode")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_l5egg"]
 resource_name = "stand"
@@ -195,23 +236,11 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("body:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_v23fu"]
 resource_name = "swingP1"
 length = 0.8
-step = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -296,6 +325,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../hitbox:process_mode")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
 
 [sub_resource type="Animation" id="Animation_c8r3i"]
 resource_name = "walk2"
@@ -363,15 +404,106 @@ tracks/4/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_r2c7e"]
+resource_name = "alert"
+length = 2.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weaponOverArm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("armOverHair:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("handBelowWeapon:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("handOverHair:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hwifu"]
 _data = {
 "RESET": SubResource("Animation_ca14y"),
+"alert": SubResource("Animation_r2c7e"),
 "stand2": SubResource("Animation_l5egg"),
 "swingP1": SubResource("Animation_v23fu"),
 "walk2": SubResource("Animation_c8r3i")
 }
 
 [node name="player" type="CharacterBody2D"]
+z_index = 10
 collision_layer = 12
 collision_mask = 129
 script = ExtResource("1_bdjat")
@@ -385,38 +517,52 @@ texture = ExtResource("2_0rxyu")
 hframes = 3
 
 [node name="body" type="Sprite2D" parent="flip/root_sprite"]
-texture = ExtResource("3_kknaw")
-hframes = 3
+texture = ExtResource("3_uerq4")
+hframes = 4
 
 [node name="arm" type="Sprite2D" parent="flip/root_sprite"]
+visible = false
 texture = ExtResource("3_40lrq")
 hframes = 4
 
 [node name="head" type="Sprite2D" parent="flip/root_sprite"]
-texture = ExtResource("4_brb0w")
+texture = ExtResource("5_moy8d")
 hframes = 4
 
 [node name="weaponBelowArm" type="Sprite2D" parent="flip/root_sprite"]
+visible = false
 texture = ExtResource("6_4jyu0")
 hframes = 3
 
 [node name="weaponOverArm" type="Sprite2D" parent="flip/root_sprite"]
-visible = false
-texture = ExtResource("5_pdpuw")
+texture = ExtResource("7_qbch8")
 hframes = 4
 
 [node name="armOverHairBelowWeapon" type="Sprite2D" parent="flip/root_sprite"]
+visible = false
 texture = ExtResource("7_1jo5u")
 hframes = 3
 
 [node name="armOverHair" type="Sprite2D" parent="flip/root_sprite"]
-texture = ExtResource("9_hlvs1")
-hframes = 3
+texture = ExtResource("9_nj2fj")
+hframes = 4
+
+[node name="handBelowWeapon" type="Sprite2D" parent="flip/root_sprite"]
+texture = ExtResource("10_8phwj")
+hframes = 4
 
 [node name="handOverHair" type="Sprite2D" parent="flip/root_sprite"]
-visible = false
-texture = ExtResource("6_670mw")
+texture = ExtResource("11_0xmca")
 hframes = 4
+
+[node name="hitbox" type="Area2D" parent="flip"]
+process_mode = 4
+collision_layer = 16
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flip/hitbox"]
+position = Vector2(-45.5, 0)
+shape = SubResource("RectangleShape2D_coc21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_d3qfo")
@@ -438,6 +584,10 @@ attack_state = NodePath("../swingP1")
 script = ExtResource("14_2el6h")
 idle_state = NodePath("../stand2")
 
+[node name="alert" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("15_ot8vh")
+idle_state = NodePath("../stand2")
+
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("../flip/root_sprite")
 libraries = {
@@ -445,3 +595,4 @@ libraries = {
 }
 
 [connection signal="animation_finished" from="animations" to="state_machine/swingP1" method="_on_animations_animation_finished"]
+[connection signal="animation_finished" from="animations" to="state_machine/alert" method="_on_animations_animation_finished"]

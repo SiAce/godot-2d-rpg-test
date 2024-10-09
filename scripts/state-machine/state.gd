@@ -1,10 +1,10 @@
 class_name State
 extends Node
 
-func enter() -> void:
+func enter(data={}) -> void:
 	pass
 
-func exit() -> void:
+func exit(data={}) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
