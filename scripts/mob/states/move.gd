@@ -1,7 +1,5 @@
 extends MobState
 
-@export
-var hit_state: State
 
 func enter(data={}) -> void:
 	parent.velocity.x = parent.direction * move_speed

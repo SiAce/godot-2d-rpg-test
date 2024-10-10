@@ -11,6 +11,10 @@ var forward_ray: RayCast2D = $flip/forward
 var flip: Node2D = $flip
 @export
 var direction = -1
+@export
+var max_hp = 100
+@onready
+var current_hp = max_hp
 
 func _ready() -> void:
 	state_machine.init(self)
@@ -26,7 +30,12 @@ func _process(delta: float) -> void:
 
 func _on_hithurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.on_hit()
+		var hit_direction = 1 if body.global_position.x > global_position.x else -1
+		body.on_hit({"hit_direction": hit_direction})
 
 func _on_hithurtbox_area_entered(area: Area2D) -> void:
-	state_machine.change_state($state_machine/hit1, {"area": area})
+	if area is HitBox:
+		state_machine.change_state($state_machine/hit1, {
+			"hit_direction": 1 if global_position.x > area.global_position.x else -1,
+			"damage": area.calculate_damage()
+			})

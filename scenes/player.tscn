@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://n8ifsaklqx21"]
+[gd_scene load_steps=27 format=3 uid="uid://n8ifsaklqx21"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_bdjat"]
 [ext_resource type="Texture2D" uid="uid://c1jliqon70icw" path="res://sprites/player/swingP1/weaponBelowBody/0.png" id="2_0rxyu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://brlrnl0s00f67" path="res://sprites/player/alert/armOverHair/0.png" id="9_nj2fj"]
 [ext_resource type="Texture2D" uid="uid://cpap0h07ow20w" path="res://sprites/player/alert/handBelowWeapon/0.png" id="10_8phwj"]
 [ext_resource type="Texture2D" uid="uid://bo8bq7wp3wblg" path="res://sprites/player/alert/handOverHair/0.png" id="11_0xmca"]
+[ext_resource type="Script" path="res://scripts/player/hitbox.gd" id="12_p1tee"]
 [ext_resource type="Texture2D" uid="uid://dt5nrgqi0m5mw" path="res://sprites/afterimage/polearm/swingP1/0.png" id="12_rqys8"]
 [ext_resource type="Script" path="res://scripts/player/states/swingP1.gd" id="14_2el6h"]
 [ext_resource type="Script" path="res://scripts/player/states/alert.gd" id="15_ot8vh"]
@@ -584,6 +585,7 @@ process_mode = 4
 position = Vector2(-45, 0)
 collision_layer = 16
 collision_mask = 64
+script = ExtResource("12_p1tee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flip/hitbox"]
 shape = SubResource("RectangleShape2D_coc21")

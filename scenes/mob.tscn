@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://klj6ov2judbr"]
+[gd_scene load_steps=32 format=3 uid="uid://klj6ov2judbr"]
 
 [ext_resource type="Script" path="res://scripts/mob/mob.gd" id="1_1jexd"]
 [ext_resource type="Texture2D" uid="uid://xf34dbkt4nue" path="res://sprites/mob/snail/die1-sheet.png" id="1_de5wi"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://sw8ffjw1te1s" path="res://scenes/state_machine.tscn" id="5_qlrrp"]
 [ext_resource type="Script" path="res://scripts/mob/states/move.gd" id="7_b5ud8"]
 [ext_resource type="Script" path="res://scripts/mob/states/hit1.gd" id="8_0i2s4"]
+[ext_resource type="Script" path="res://scripts/mob/states/die1.gd" id="9_hjeeg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pscrp"]
 atlas = ExtResource("1_de5wi")
@@ -175,6 +176,7 @@ size = Vector2(38, 26)
 [node name="mob" type="CharacterBody2D"]
 collision_layer = 32
 script = ExtResource("1_1jexd")
+max_hp = 10
 
 [node name="flip" type="Node2D" parent="."]
 
@@ -196,9 +198,13 @@ starting_state = NodePath("move")
 script = ExtResource("7_b5ud8")
 move_speed = 40.0
 
-[node name="hit1" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state")]
+[node name="hit1" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state", "die_state")]
 script = ExtResource("8_0i2s4")
 move_state = NodePath("../move")
+die_state = NodePath("../die1")
+
+[node name="die1" type="Node" parent="state_machine"]
+script = ExtResource("9_hjeeg")
 
 [node name="hithurtbox" type="Area2D" parent="."]
 collision_layer = 192
@@ -208,5 +214,6 @@ collision_mask = 24
 shape = SubResource("RectangleShape2D_jdvlr")
 
 [connection signal="animation_finished" from="flip/ani_sprite" to="state_machine/hit1" method="_on_ani_sprite_animation_finished"]
+[connection signal="animation_finished" from="flip/ani_sprite" to="state_machine/die1" method="_on_ani_sprite_animation_finished"]
 [connection signal="area_entered" from="hithurtbox" to="." method="_on_hithurtbox_area_entered"]
 [connection signal="body_entered" from="hithurtbox" to="." method="_on_hithurtbox_body_entered"]

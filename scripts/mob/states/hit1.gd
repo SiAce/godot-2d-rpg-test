@@ -1,20 +1,26 @@
 extends MobState
 
 @export
-var move_state: State
+var move_state: MobState
+@export
+var die_state: MobState
 @onready
 var finished = false
 
 func enter(data={}) -> void:
 	finished = false
-	
-	parent.direction = 1 if data.area.global_position.x > parent.global_position.x else -1
+	parent.current_hp -= data.damage
+	print(parent.current_hp)
+	var hit_direction = data.hit_direction
+	parent.direction = -hit_direction
 	parent.flip.scale.x = -parent.direction
 	
 	parent.velocity.x = - parent.direction * move_speed
 	parent.ani_sprite.play(animation_name)
 
 func process_physics(delta: float) -> State:
+	if parent.current_hp <= 0:
+		return die_state
 	if finished:
 		return move_state
 		

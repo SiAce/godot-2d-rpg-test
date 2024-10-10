@@ -15,8 +15,12 @@ https://siace.itch.io/2d-rpg-test
 - Attack Hitbox 
 - Hurtbox/collision
 - Attack Visual Effect
+- Mob HP/Death
 
 ## TODO
+- Mob HP UI
+- Player HP/Death
+- Player HP UI
 - Attribute System
 - Leveling System
 - Skill System
