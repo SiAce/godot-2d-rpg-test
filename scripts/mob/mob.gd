@@ -1,6 +1,11 @@
 class_name Mob
 extends CharacterBody2D
 
+@export
+var direction = -1
+@export
+var max_hp = 100
+
 @onready
 var state_machine = $state_machine
 @onready
@@ -9,10 +14,8 @@ var ani_sprite: AnimatedSprite2D = $flip/ani_sprite
 var forward_ray: RayCast2D = $flip/forward
 @onready
 var flip: Node2D = $flip
-@export
-var direction = -1
-@export
-var max_hp = 100
+@onready
+var health_bar: ProgressBar = $ui/health_bar
 @onready
 var current_hp = max_hp
 

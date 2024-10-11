@@ -10,7 +10,7 @@ var finished = false
 func enter(data={}) -> void:
 	finished = false
 	parent.current_hp -= data.damage
-	print(parent.current_hp)
+	parent.health_bar.value = 100 * parent.current_hp  / parent.max_hp
 	var hit_direction = data.hit_direction
 	parent.direction = -hit_direction
 	parent.flip.scale.x = -parent.direction

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://klj6ov2judbr"]
+[gd_scene load_steps=34 format=3 uid="uid://klj6ov2judbr"]
 
 [ext_resource type="Script" path="res://scripts/mob/mob.gd" id="1_1jexd"]
 [ext_resource type="Texture2D" uid="uid://xf34dbkt4nue" path="res://sprites/mob/snail/die1-sheet.png" id="1_de5wi"]
@@ -173,6 +173,11 @@ height = 38.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdvlr"]
 size = Vector2(38, 26)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wykg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03h75"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="mob" type="CharacterBody2D"]
 collision_layer = 32
 script = ExtResource("1_1jexd")
@@ -212,6 +217,30 @@ collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hithurtbox"]
 shape = SubResource("RectangleShape2D_jdvlr")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -19.0
+offset_bottom = -19.0
+
+[node name="health_bar" type="ProgressBar" parent="ui"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -4.0
+offset_right = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_0wykg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_03h75")
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [connection signal="animation_finished" from="flip/ani_sprite" to="state_machine/hit1" method="_on_ani_sprite_animation_finished"]
 [connection signal="animation_finished" from="flip/ani_sprite" to="state_machine/die1" method="_on_ani_sprite_animation_finished"]
