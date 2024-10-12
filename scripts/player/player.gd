@@ -43,9 +43,14 @@ var state_machine: StateMachine = $state_machine
 var root_sprite = $flip/root_sprite
 @onready
 var flip = $flip
-@onready
+
 var sprite_textures = {}	
 var equipments = {}
+var stats = {
+	"HP": 100,
+	"MP": 100,
+	"EXP": 0
+}
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
