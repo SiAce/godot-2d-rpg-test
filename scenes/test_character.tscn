@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://dm7waqvbq2a5a"]
+[gd_scene load_steps=10 format=4 uid="uid://dm7waqvbq2a5a"]
 
 [ext_resource type="PackedScene" uid="uid://n8ifsaklqx21" path="res://scenes/player.tscn" id="1_ofrvi"]
 [ext_resource type="Texture2D" uid="uid://ccuqtsfs4yh1b" path="res://sprites/world_tileset.png" id="2_fl2t1"]
 [ext_resource type="PackedScene" uid="uid://klj6ov2judbr" path="res://scenes/mob.tscn" id="2_x03lp"]
+[ext_resource type="PackedScene" uid="uid://d3lrhlh21yaww" path="res://scenes/HUD.tscn" id="4_axvle"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5h22"]
 texture = ExtResource("2_fl2t1")
@@ -175,8 +176,10 @@ position = Vector2(-349, 6)
 shape = SubResource("WorldBoundaryShape2D_22skp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -72)
+position = Vector2(0, -73)
 zoom = Vector2(2, 2)
 
 [node name="mob" parent="." instance=ExtResource("2_x03lp")]
 position = Vector2(-259, 18)
+
+[node name="HUD" parent="." instance=ExtResource("4_axvle")]

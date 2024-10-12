@@ -5,6 +5,8 @@ extends CharacterBody2D
 var direction = -1
 @export
 var max_hp = 100
+@export
+var damage = 2
 
 @onready
 var state_machine = $state_machine
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 func _on_hithurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var hit_direction = 1 if body.global_position.x > global_position.x else -1
-		body.on_hit({"hit_direction": hit_direction})
+		body.on_hit({"hit_direction": hit_direction, "damage": damage})
 
 func _on_hithurtbox_area_entered(area: Area2D) -> void:
 	if area is HitBox:

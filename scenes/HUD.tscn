@@ -1,0 +1,169 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3lrhlh21yaww"]
+
+[ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_2rw4p"]
+[ext_resource type="Script" path="res://scripts/hud/hp.gd" id="2_wc0ft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8o4m"]
+bg_color = Color(0.211765, 0.239216, 0.290196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je1re"]
+bg_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dsck"]
+bg_color = Color(0.88, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1yi2"]
+bg_color = Color(0.0729, 0.46602, 0.81, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lc8r"]
+bg_color = Color(0.260667, 0.68, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_2rw4p")
+
+[node name="root" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="root"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="player_panel" type="Panel" parent="root"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_k8o4m")
+
+[node name="player_container" type="HBoxContainer" parent="root/player_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root/player_panel/player_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="player_stats" type="VBoxContainer" parent="root/player_panel/player_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="hp_mp_container" type="HBoxContainer" parent="root/player_panel/player_container/player_stats"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="hp_label" type="Label" parent="root/player_panel/player_container/player_stats/hp_mp_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(1, 0.31, 0.31, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp" type="VBoxContainer" parent="root/player_panel/player_container/player_stats/hp_mp_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+script = ExtResource("2_wc0ft")
+
+[node name="hp_number" type="Label" parent="root/player_panel/player_container/player_stats/hp_mp_container/hp"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="hp_bar" type="ProgressBar" parent="root/player_panel/player_container/player_stats/hp_mp_container/hp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_je1re")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0dsck")
+value = 58.58
+
+[node name="mp_label" type="Label" parent="root/player_panel/player_container/player_stats/hp_mp_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.31, 0.5975, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "MP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mp" type="VBoxContainer" parent="root/player_panel/player_container/player_stats/hp_mp_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="mp_number" type="Label" parent="root/player_panel/player_container/player_stats/hp_mp_container/mp"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="mp_bar" type="ProgressBar" parent="root/player_panel/player_container/player_stats/hp_mp_container/mp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_je1re")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x1yi2")
+value = 37.08
+
+[node name="exp_container" type="HBoxContainer" parent="root/player_panel/player_container/player_stats"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="exp_label" type="Label" parent="root/player_panel/player_container/player_stats/exp_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.138307, 0.82, 0.1148, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exp" type="VBoxContainer" parent="root/player_panel/player_container/player_stats/exp_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="hp_number" type="Label" parent="root/player_panel/player_container/player_stats/exp_container/exp"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="hp_bar" type="ProgressBar" parent="root/player_panel/player_container/player_stats/exp_container/exp"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_je1re")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0lc8r")
+value = 58.58
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="root/player_panel/player_container"]
+layout_mode = 2
+size_flags_horizontal = 3

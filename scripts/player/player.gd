@@ -47,10 +47,15 @@ var flip = $flip
 var sprite_textures = {}	
 var equipments = {}
 var stats = {
-	"HP": 100,
+	"HP": {
+		"max": 100,
+		"current": 100,
+	},
 	"MP": 100,
 	"EXP": 0
 }
+
+signal health_changed(old_hp: int, new_hp: int, max_hp: int)
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,

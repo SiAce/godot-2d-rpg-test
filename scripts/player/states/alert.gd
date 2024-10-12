@@ -7,10 +7,19 @@ var finished: bool
 
 func enter(data={}) -> void:
 	super.enter(data)
+	finished = false
+	
+	var old_hp = parent.stats.HP.current
+	var new_hp = parent.stats.HP.current - data.damage
+	parent.stats.HP.current = new_hp
+	parent.health_changed.emit(old_hp, new_hp, parent.stats.HP.max)
+	
+	
 	var hit_direction = data.hit_direction
 	parent.velocity.x = hit_direction * move_speed
 	parent.velocity.y = -move_speed
-	finished = false
+	
+	
 
 func process_frame(delta: float) -> State:
 	if finished:
