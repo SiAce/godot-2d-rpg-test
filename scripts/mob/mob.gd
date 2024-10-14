@@ -19,6 +19,8 @@ var flip: Node2D = $flip
 @onready
 var health_bar: ProgressBar = $ui/health_bar
 @onready
+var ui: Control = $ui
+@onready
 var current_hp = max_hp
 
 func _ready() -> void:

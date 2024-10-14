@@ -221,8 +221,8 @@ shape = SubResource("RectangleShape2D_jdvlr")
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -19.0
-offset_bottom = -19.0
+offset_top = -20.0
+offset_bottom = -20.0
 
 [node name="health_bar" type="ProgressBar" parent="ui"]
 layout_mode = 1
