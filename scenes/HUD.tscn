@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3lrhlh21yaww"]
+[gd_scene load_steps=15 format=3 uid="uid://d3lrhlh21yaww"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_2rw4p"]
-[ext_resource type="Script" path="res://scripts/hud/hp.gd" id="2_wc0ft"]
+[ext_resource type="Script" path="res://scripts/hud/player_stats/hp.gd" id="2_wc0ft"]
+[ext_resource type="Script" path="res://scripts/hud/player_stats/mp.gd" id="3_r0yml"]
+[ext_resource type="Script" path="res://scripts/hud/player_stats/exp.gd" id="4_um67x"]
+[ext_resource type="StyleBox" uid="uid://0282cijwskk8" path="res://styles/orange-flat.tres" id="5_7yn8n"]
+[ext_resource type="Script" path="res://scripts/hud/attributes/attributes.gd" id="5_guaeb"]
+[ext_resource type="Script" path="res://scripts/hud/attributes/attribute.gd" id="6_jh10p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8o4m"]
 bg_color = Color(0.211765, 0.239216, 0.290196, 1)
@@ -18,34 +23,40 @@ bg_color = Color(0.0729, 0.46602, 0.81, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lc8r"]
 bg_color = Color(0.260667, 0.68, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8mpw"]
+bg_color = Color(0.8281, 0.91, 0.90454, 1)
+border_color = Color(0.41, 0.387792, 0.3075, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mevrr"]
+bg_color = Color(0.92, 0.503547, 0.0276, 1)
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_2rw4p")
 
-[node name="root" type="VBoxContainer" parent="."]
+[node name="root" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="root"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
-
-[node name="player_panel" type="Panel" parent="root"]
+[node name="player_panel" type="PanelContainer" parent="root"]
 custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_k8o4m")
 
 [node name="player_container" type="HBoxContainer" parent="root/player_panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="root/player_panel/player_container"]
 layout_mode = 2
@@ -109,6 +120,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
+script = ExtResource("3_r0yml")
 
 [node name="mp_number" type="Label" parent="root/player_panel/player_container/player_stats/hp_mp_container/mp"]
 layout_mode = 2
@@ -146,8 +158,9 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
+script = ExtResource("4_um67x")
 
-[node name="hp_number" type="Label" parent="root/player_panel/player_container/player_stats/exp_container/exp"]
+[node name="exp_number" type="Label" parent="root/player_panel/player_container/player_stats/exp_container/exp"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
@@ -155,7 +168,7 @@ text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="hp_bar" type="ProgressBar" parent="root/player_panel/player_container/player_stats/exp_container/exp"]
+[node name="exp_bar" type="ProgressBar" parent="root/player_panel/player_container/player_stats/exp_container/exp"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -167,3 +180,288 @@ value = 58.58
 [node name="VBoxContainer3" type="VBoxContainer" parent="root/player_panel/player_container"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="attributes_panel" type="PanelContainer" parent="root"]
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 586.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j8mpw")
+script = ExtResource("5_guaeb")
+
+[node name="attributes_stats" type="HBoxContainer" parent="root/attributes_panel"]
+layout_mode = 2
+
+[node name="attributes" type="VBoxContainer" parent="root/attributes_panel/attributes_stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="strength" type="HBoxContainer" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+script = ExtResource("6_jh10p")
+
+[node name="label" type="Label" parent="root/attributes_panel/attributes_stats/attributes/strength"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Strength
+"
+
+[node name="value" type="RichTextLabel" parent="root/attributes_panel/attributes_stats/attributes/strength"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]24[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="root/attributes_panel/attributes_stats/attributes/strength"]
+layout_mode = 2
+
+[node name="allocated" type="Label" parent="root/attributes_panel/attributes_stats/attributes/strength"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="minus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/strength"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_mevrr")
+disabled = true
+text = "-"
+
+[node name="plus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/strength"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_7yn8n")
+text = "+"
+
+[node name="dexterity" type="HBoxContainer" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+script = ExtResource("6_jh10p")
+
+[node name="label" type="Label" parent="root/attributes_panel/attributes_stats/attributes/dexterity"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Dexterity"
+
+[node name="value" type="RichTextLabel" parent="root/attributes_panel/attributes_stats/attributes/dexterity"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]24[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="root/attributes_panel/attributes_stats/attributes/dexterity"]
+layout_mode = 2
+
+[node name="allocated" type="Label" parent="root/attributes_panel/attributes_stats/attributes/dexterity"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="minus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/dexterity"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_mevrr")
+disabled = true
+text = "-"
+
+[node name="plus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/dexterity"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_7yn8n")
+text = "+"
+
+[node name="intelligence" type="HBoxContainer" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+script = ExtResource("6_jh10p")
+
+[node name="label" type="Label" parent="root/attributes_panel/attributes_stats/attributes/intelligence"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Intelligence"
+
+[node name="value" type="RichTextLabel" parent="root/attributes_panel/attributes_stats/attributes/intelligence"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]24[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="root/attributes_panel/attributes_stats/attributes/intelligence"]
+layout_mode = 2
+
+[node name="allocated" type="Label" parent="root/attributes_panel/attributes_stats/attributes/intelligence"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="minus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/intelligence"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_mevrr")
+disabled = true
+text = "-"
+
+[node name="plus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/intelligence"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_7yn8n")
+text = "+"
+
+[node name="luck" type="HBoxContainer" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+script = ExtResource("6_jh10p")
+
+[node name="label" type="Label" parent="root/attributes_panel/attributes_stats/attributes/luck"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Luck
+"
+
+[node name="value" type="RichTextLabel" parent="root/attributes_panel/attributes_stats/attributes/luck"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]24[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="root/attributes_panel/attributes_stats/attributes/luck"]
+layout_mode = 2
+
+[node name="allocated" type="Label" parent="root/attributes_panel/attributes_stats/attributes/luck"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="minus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/luck"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_mevrr")
+disabled = true
+text = "-"
+
+[node name="plus" type="Button" parent="root/attributes_panel/attributes_stats/attributes/luck"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_7yn8n")
+text = "+"
+
+[node name="submit" type="Button" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("5_7yn8n")
+disabled = true
+text = "Submit"
+
+[node name="HSeparator" type="HSeparator" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+
+[node name="level" type="HBoxContainer" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="root/attributes_panel/attributes_stats/attributes/level"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Level"
+
+[node name="value" type="Label" parent="root/attributes_panel/attributes_stats/attributes/level"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "24
+"
+horizontal_alignment = 1
+
+[node name="available_points" type="HBoxContainer" parent="root/attributes_panel/attributes_stats/attributes"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="root/attributes_panel/attributes_stats/attributes/available_points"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Available Points"
+
+[node name="value" type="Label" parent="root/attributes_panel/attributes_stats/attributes/available_points"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "24"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="root/attributes_panel/attributes_stats"]
+layout_mode = 2
+
+[connection signal="pressed" from="root/attributes_panel/attributes_stats/attributes/submit" to="root/attributes_panel" method="_on_submit_pressed"]

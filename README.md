@@ -20,9 +20,9 @@ https://siace.itch.io/2d-rpg-test
 - Player HP
 - Player HP UI
 - Damage Hit number
+- Attribute System
 
 ## TODO
-- Attribute System
 - Leveling System
 - Skill System
 - Player Death
